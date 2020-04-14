@@ -1,25 +1,24 @@
 presubmits:
-  uruground/prow-test:
-  - name: test
-    trigger: "(?m)^/test"
-    rerun_command: "/test"
-    context: test
-    always_run: true
-    agent: kubernetes
-    decorate: true
-    spec:
-      containers:
-      - image: golang:1.13
-        command: ["go", "test", "./..."]
+- name: test
+  trigger: "(?m)^/test"
+  rerun_command: "/test"
+  context: test
+  always_run: true
+  agent: kubernetes
+  decorate: true
+  spec:
+    containers:
+    - image: golang:1.13
+      command: ["go", "test", "./..."]
 
-  - name: build
-    trigger: "(?m)^/build"
-    rerun_command: "/build"
-    context: build
-    always_run: true
-    agent: kubernetes
-    decorate: true
-    spec:
-      containers:
-      - image: golang:1.13
-        command: ["go", "build"]
+- name: build
+  trigger: "(?m)^/build"
+  rerun_command: "/build"
+  context: build
+  always_run: true
+  agent: kubernetes
+  decorate: true
+  spec:
+    containers:
+    - image: golang:1.13
+      command: ["go", "build"]
